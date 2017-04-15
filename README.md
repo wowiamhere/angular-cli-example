@@ -8,11 +8,11 @@ The folks at [Angular2] have done a great job with the framework.  The framework
 
 Lets begin,  
 
-### 1. create a folder for our project
+## 1. create a folder for our project
 
 Lets call it `angular-cli-example`  
 
-### 2. open a command line and type:  
+## 2. open a command line and type  
 
 ```
 $ ng new angular_cli_example    
@@ -57,7 +57,7 @@ In the **root** folder, we have
 As we encounter other files in our project, they will be further discussed.  
 
 
-### 3. Install dependencies and run
+## 3. Install dependencies and run
 
 Whan you run `ng new [app-name]`, Angular2 automatically installs NPM packages, so you don't have to run `
 $ npm install`  
@@ -73,14 +73,28 @@ You will see something this in your terminal
 
 ![ng serve output][ng serve output]  
 
+This means that [Angular-cli] has produced the necessary files that will be served.  
+
 Now, open a browser and navigate to `localhost:4200`.  *4200* is the default port [Angular-cli] uses;you can configure this to be something else.  
 
-Now that we have verified that our app runs, let's make some changes to customize our project.  
+![ng serve browser test][ng serve browser test]  
 
-### 4. First Edit  
+The  
+
+```
+app works!
+```  
+
+text comes from the `app.component.ts` file, and now that we have verified that our app runs, let's make some changes to customize our project.  
+
+## 4. First Edit  
 
 Open this file  
-    `angular-cli-example/src/app/app.component.ts`  
+
+```
+angular-cli-example/src/app/app.component.ts
+```  
+
 This is our component!  
 
 ```typescript
@@ -117,7 +131,7 @@ The **[Component Decorator]** takes *Metadata* of properties to be used for the 
 - *styleUrls*
     + an *array* of *.css* (style) files for this component  
 
-#### 3.1 The Module  
+#### 4.1 The Module  
 
 An [ngModule] brings together all the different parts of the application.  
 
@@ -157,11 +171,29 @@ It also has **metadata**:
     + once declared here, we can include the service within any [Angular2] Component via [dependency injection] (we will discuss this further down)  
 - bootstrap  
     + an array that defines the components that will be bootstrapped with this module  
-    + in this case, out main component `AppComponent` in `app.component.ts`  
+    + in this case, our main component `AppComponent` in `app.component.ts`  
 
-The application can be launched by bootstrapping the root module, `app.module.ts`, in the `src/main.ts` file.  
+The file *exports* the class that will be used to *launch* the application by bootstrapping this root module within the `src/main.ts` file  
 
+```
+platformBrowserDynamic().bootstrapModule(AppModule);
+```  
 
+*This is a very fast run down just to get us up and running.*  
+
+Now change the  `title` *property* of the exported class to whatever text you would like to see in the browser.  
+Because we ran  
+
+```
+ng serve
+```  
+
+this will automatically update all pertinent files and you will **immeditely** see the result in the browser ... very cool.  
+
+## 5. Restructuring **`src/app`**  
+
+In order to accomodate for the different components, views (.html files), testing, css, etc,  
+we will
 
 
 
@@ -198,3 +230,4 @@ The application can be launched by bootstrapping the root module, `app.module.ts
 
 [ng new output]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/ng_new_output.png
 [ng serve output]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/ngServe.png
+[ng serve browser test]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/ngServeBrowserTest.png
