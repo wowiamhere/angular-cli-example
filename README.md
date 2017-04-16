@@ -1,4 +1,4 @@
-# Angular-cli (Angular 2)
+# Angular-cli (Angular 2)- *Jump Start*
 
 We are going to jump start a simple [Angular2] application to show how simple and straight forward it is to build a [SPA].  
 
@@ -123,8 +123,8 @@ The **[Component Decorator]** takes *Metadata* of properties to be used for the 
 
 - *selector*  
     +  **< app-root>< /app-root>**  
-        - this is the DOM tag to be used in the **`src/index.html`** file where the contents of this component will be displayed  
-        - every [Angular2] app has a main (root) component 
+        - this is the DOM tag to be used in the **`src/index.html`** file where the contents of this component will be displayed ![src/index.html][src/index.html]  
+        - every [Angular2] app has a main (root) component  
     + it will display all the contents of the .html file that pertains to this component  
     + the contents of the **.html file** can be manipulated from this component file *(app.component.ts)*      
 - *templateUrl*  
@@ -209,13 +209,143 @@ if you don't, you'll get a compile error
 
 ![dir compile error][dir compile error]  
 
+## 6. Adding New Functionality  
 
+The template for our `AppComponent` is pretty simple right now  
 
+```
+<h1>
+  {{title}}
+</h1>
+```
 
+The double brackets are called **interpolation** and the **title** text represents the **property** discussed earlier from our exported class in  
 
+```
+app.component.ts
+```  
 
+We will add another *property* with some text and a *function* to our component and a button to our template to toggle the text from the view.  
 
+```
+export class AppComponent {
+  title: string = 'Angular2';
+ 
+  name: string = 'Newton'
 
+  changeName():void{
+    this.name = 'Aristophanes'
+  }
+  
+}
+
+```
+
+**[Typescript annotations]** allows us to put a colon `(:)` after a *property*, *function* or *function argument* to denote it's type. In the case of a *function*, the annotation refers to the expected type the function will return.  
+Here is a list of [Typescript types].  
+
+After declaring a new property `name`, the function `changeName()` changes the value of the `name` property using `this` to denote a class member.  The *void* after the `:` refers to the fact that the function will NOT be returning a value.  
+
+```html
+<h1>
+  {{title}}
+</h1>
+
+<h2 (click)=changeName()>
+  {{name}}'s Application
+</h2>
+```
+
+In the template for the component, we added a `<h2>` for the `name` property.  
+
+`(click)=changeName()` is [Angular2]'s [template sintax] called [Event Binding]. Everytime the `<h2>` gets clicked, it changes the `innerHTML` of the element: right there in front of your very eyes!
+
+Now that we have played around a little bit with the component and it's template, let's add a new one and explore other features of [Angular2].  
+
+## 6. A new component
+
+Create a new file in the `src/app/components/` folder called `news.component.ts`.  
+
+```
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'news-component',
+  templateUrl: '../templates/news.component.html',
+  styleUrls: [ '../styles/app.component.css']
+})
+
+export class NewsComponent {
+  title:string = "This is the Daily news";
+
+}
+```
+
+Also, create it's view in `src/app/templates/` folder called 'news.component.html'. 
+
+```
+<h2>
+  {{title}}
+</h2>
+
+```
+
+You WILL NOT see this updated in your browser because we have NOT told [Angular2] where to display it.  
+We could display this component in the `src/index.html` file OR we could *embed* it within any other view we choose and turn this component into a **child component** of another component.  
+
+Lets place it within `AppComponent` and turn it into a *parent component* of `NewsComponent`.  
+We do this by adding the *component selector property* as an *html tag* wherin `AppComponent` we want it displayed.  
+
+```
+<h1>
+  {{title}}
+</h1>
+
+<h2 (click)=changeName()>
+  {{name}}'s Application
+</h2>
+
+<news-component></news-component>
+```  
+
+You WILL NOT see this updated in your browser yet because it is necessary to LOAD the new component into the application in the `app.module.ts` file  
+
+```
+...
+
+  /* components */
+import { AppComponent } from './components/app.component';
+import { NewsComponent } from './components/news.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    NewsComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule
+
+...
+```    
+Once *imported*, the component has to be included within the `declarations` array of the *module* for it to be available anywhere within the application.  
+Now you'll be able to see the updated component within your browser!  
+
+Next up, the first service.  
+
+## 7. Services
+
+Sometimes certain routines have to be repeated over and over, but what is the point of hard coding these into each component!?  
+This would bloat the application.  
+**Services** are classes that live in their own file and take a [Component Decorator]:  
+
+```
+@Injectable()
+```  
+
+They can be used within any component by way of [Dependency Injection].
+Lets create one for our application.  
 
 
 
@@ -223,10 +353,14 @@ if you don't, you'll get a compile error
 [Angular-cli]: https://cli.angular.io/
 [Angular-cli github]: https://github.com/angular/angular-cli
 [Angular2]: https://angular.io/docs/ts/latest/guide/
+[Event Binding]: https://angular.io/docs/ts/latest/guide/user-input.html#!#click
+[template sintax]: https://angular.io/docs/ts/latest/guide/template-syntax.html
 [Webpack]: https://webpack.github.io/docs/
 [SPA]: https://en.wikipedia.org/wiki/Single-page_application
 [Typescript]: https://www.typescriptlang.org/docs/handbook/angular.html
 [Typescript transpiler]: https://www.typescriptlang.org/play/
+[Typescript annotations]: https://www.typescriptlang.org/docs/tutorial.html#type-annotations
+[Typescript types]: https://www.typescriptlang.org/docs/handbook/basic-types.html
 [NPM's package manager]: https://docs.npmjs.com/files/package.json
 [Component Decorator]: https://angular.io/docs/ts/latest/api/core/index/Component-decorator.html
 [ngModule]: https://angular.io/docs/ts/latest/api/core/index/NgModule-interface.html
@@ -238,3 +372,4 @@ if you don't, you'll get a compile error
 [folder hierarchy]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/folderHierarchy.png
 [metadata directory change]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/updateDirs.png
 [dir compile error]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/dirCompileError.png
+[src/index.html]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/indexHtml.png
