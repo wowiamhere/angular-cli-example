@@ -346,6 +346,24 @@ This would bloat the application.
 
 They can be used within any component by way of [Dependency Injection].
 Lets create one for our application.  
+The service is going to make an HTTP call to [News API].  It's going to fetch some information and display it within a component.  
+We will make use of the [RxJx] library which is one of [Angular2]'s bundle for handling information.  
+It consists of [observable]s, [subscription]s and a whole library of very usefull and very cool way of handling information.   
+If you thought that Promises were great, you are about to have your shoes knocked off!  
+
+Create a file in **`src/app/services`** like this  
+
+```
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class NewsService{
+  
+}
+```  
+
+A service looks somewhat similar to a component.  
+
 
 
 
@@ -365,6 +383,10 @@ Lets create one for our application.
 [Component Decorator]: https://angular.io/docs/ts/latest/api/core/index/Component-decorator.html
 [ngModule]: https://angular.io/docs/ts/latest/api/core/index/NgModule-interface.html
 [dependency injection]: https://angular.io/docs/ts/latest/cookbook/dependency-injection.html
+[News API]: https://newsapi.org/#documentation
+[RxJx]: http://reactivex.io/rxjs/manual/overview.html
+[observable]: http://reactivex.io/rxjs/manual/overview.html#observable
+[subscription]: http://reactivex.io/rxjs/manual/overview.html#subscription
 
 [ng new output]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/ng_new_output.png
 [ng serve output]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/ngServe.png

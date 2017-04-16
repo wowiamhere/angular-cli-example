@@ -2,3 +2,21 @@
   {{title}}
 </h2>
 
+<button (click)=getTheNews()>
+  Fetch News Stories
+</button>
+
+<ul *ngFor="let news_item of news_result">
+  <li>
+    {{news_item.title}}
+  </li>
+  <li>
+    {{news_item.description}}
+  </li>
+  <li>
+    {{news_item.url}}
+  </li>
+  <li>
+    {{news_item.publishedAt}}
+  </li>
+</ul>
