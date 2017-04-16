@@ -123,7 +123,8 @@ The **[Component Decorator]** takes *Metadata* of properties to be used for the 
 
 - *selector*  
     +  **< app-root>< /app-root>**  
-        - this is the DOM tag that will appear in the main view.
+        - this is the DOM tag to be used in the **`src/index.html`** file where the contents of this component will be displayed  
+        - every [Angular2] app has a main (root) component 
     + it will display all the contents of the .html file that pertains to this component  
     + the contents of the **.html file** can be manipulated from this component file *(app.component.ts)*      
 - *templateUrl*  
@@ -193,17 +194,20 @@ this will automatically update all pertinent files and you will **immeditely** s
 ## 5. Restructuring **`src/app`**  
 
 In order to accomodate for the different components, views (.html files), testing, css, etc,  
-we will
+we will restructure the folder hierarchy to match something a little more organized for our purposes.  
+The people at [Angular-cli] have given us a great starting point, now it is up to us to get ourselves organized.  
+So build a folder directory as such:  
 
+![folder hierarchy][folder hierarchy]
 
+We have transfered each file to it's respective folder but **did not** move `app.module.ts`.  
+You must also remember to update each file's *metadata* to reflect the directory change:  
 
+![metadata directory change][metadata directory change]  
 
+if you don't, you'll get a compile error  
 
-
-
-
-
-
+![dir compile error][dir compile error]  
 
 
 
@@ -231,3 +235,6 @@ we will
 [ng new output]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/ng_new_output.png
 [ng serve output]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/ngServe.png
 [ng serve browser test]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/ngServeBrowserTest.png
+[folder hierarchy]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/folderHierarchy.png
+[metadata directory change]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/updateDirs.png
+[dir compile error]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/dirCompileError.png
