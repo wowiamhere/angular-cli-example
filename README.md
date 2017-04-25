@@ -363,7 +363,59 @@ export class NewsService{
 ```  
 
 A service looks somewhat similar to a component.  
+The project's service looks like this  
 
+![first service][first service]
+
+After importing the [Component Decorator], we import [Angular2]'s native [http] class which has all verbs available (get, put, delete, etc) and will be **injected** into our service via [dependency injection] to be used to make HTTP calls to, well, anywhere we want!  
+
+The class's constructor is where the [Dependency Injection] is gonna take place.
+
+```
+constructor(private http: Http){} 
+```  
+
+Once *Injected*, the [http] capabilities are a available anywhere within the class.
+After a few string manipulation to form the proper *api end point*, 
+create a function  
+
+```
+fetchNews(){
+  let result = this.http.get( this.target_url );
+
+  return result;
+}
+```  
+or more straight forward  
+
+```
+fetchNews(){
+  return this.http.get( this.target_url );
+}
+```
+
+Once this service is *injected* into any component, `fetchNews()` will be availble within the comopnent to be used to fetch the data from the *api end point*.  
+Let's proceed to our `news.component.ts` file to do that.
+
+```
+export class NewsComponent {
+
+  constructor(private newsService: NewsService){}
+
+  title:string = "This is the Daily news";
+  news_result: Array<any>;
+
+  getTheNews(){
+      
+    this.newsService.fetchNews().subscribe(r => {
+      this.news_result = r.json().articles;
+    } );
+  }
+
+}
+```
+
+# TO BE COMTINUED IN PART II ....
 
 
 
@@ -371,6 +423,8 @@ A service looks somewhat similar to a component.
 [Angular-cli]: https://cli.angular.io/
 [Angular-cli github]: https://github.com/angular/angular-cli
 [Angular2]: https://angular.io/docs/ts/latest/guide/
+[http]: https://angular.io/docs/ts/latest/api/http/index/Http-class.html
+[dependency injection]: https://angular.io/docs/ts/latest/cookbook/dependency-injection.html
 [Event Binding]: https://angular.io/docs/ts/latest/guide/user-input.html#!#click
 [template sintax]: https://angular.io/docs/ts/latest/guide/template-syntax.html
 [Webpack]: https://webpack.github.io/docs/
@@ -382,11 +436,11 @@ A service looks somewhat similar to a component.
 [NPM's package manager]: https://docs.npmjs.com/files/package.json
 [Component Decorator]: https://angular.io/docs/ts/latest/api/core/index/Component-decorator.html
 [ngModule]: https://angular.io/docs/ts/latest/api/core/index/NgModule-interface.html
-[dependency injection]: https://angular.io/docs/ts/latest/cookbook/dependency-injection.html
 [News API]: https://newsapi.org/#documentation
 [RxJx]: http://reactivex.io/rxjs/manual/overview.html
 [observable]: http://reactivex.io/rxjs/manual/overview.html#observable
 [subscription]: http://reactivex.io/rxjs/manual/overview.html#subscription
+
 
 [ng new output]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/ng_new_output.png
 [ng serve output]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/ngServe.png
@@ -395,3 +449,4 @@ A service looks somewhat similar to a component.
 [metadata directory change]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/updateDirs.png
 [dir compile error]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/dirCompileError.png
 [src/index.html]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/indexHtml.png
+[first service]: https://s3-us-west-2.amazonaws.com/zencodemaster/tutorials/angular-cli/firstService.png

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 import { Observable } from 'rxjs';
-  /* services */
 
+  /* services */
 import { NewsService } from '../services/news.service';
 
 @Component({
