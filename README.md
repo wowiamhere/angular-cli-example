@@ -1,5 +1,7 @@
 # Angular-cli (Angular 2)- *Jump Start*
 
+<small>Follow at: **<a href="http://zencodemaster.com/coding-post/2" target="_blank">ZenCodeMaster.com**</a></small>
+
 We are going to jump start a simple [Angular2] application to show how simple and straight forward it is to build a [SPA].  
 
 The folks at [Angular2] have done a great job with the framework.  The framework basically consists of a *Module* which connects *Components*, *Services*, etc...  We will review each part as we go along.  
@@ -19,13 +21,13 @@ $ ng new angular_cli_example
 ```      
 
 This will create the initial source folders and files needed to jump start a project.  
-It will also install the some necessary tools ( don't worry about this now. It will all be explained in due time).  
+It will also install the some necessary tools ( don''t worry about this now. It will all be explained in due time).  
 
 *For a complete list of [Angular-cli] commands, usage and capabilities refer to [Angular-cli github]*  
 
 This is the output you should expect to see on your terminal ![ng new output][ng new output]  
 
-Let's take a quick look at what [Angular-cli]'s generator produces:  
+Let''s take a quick look at what [Angular-cli]''s generator produces:  
 
 In the **`src/app`** folder, a barebones  
 
@@ -49,17 +51,17 @@ In the **`src/`** folder, you will find a file
 In the **root** folder, we have  
 
 - **package.json**
-    + [NPM's package manager]
+    + [NPM''s package manager]
     + here you list all the dependencies that you need for your project
 - **angular-cli.json**
-    + this is where [Angular-cli] picks up it's configuration for the project
+    + this is where [Angular-cli] picks up it''s configuration for the project
 
 As we encounter other files in our project, they will be further discussed.  
 
 
 ## 3. Install dependencies and run
 
-Whan you run `ng new [app-name]`, Angular2 automatically installs NPM packages, so you don't have to run `
+Whan you run `ng new [app-name]`, Angular2 automatically installs NPM packages, so you don''t have to run `
 $ npm install`  
 
 Now just run  
@@ -68,7 +70,7 @@ Now just run
 $ ng serve
 ```
 
-This will start [Angular-cli]'s server and will watch your files as you edit them automatically updating the view in the browser.  
+This will start [Angular-cli]''s server and will watch your files as you edit them automatically updating the view in the browser.  
 You will see something this in your terminal  
 
 ![ng serve output][ng serve output]  
@@ -85,7 +87,7 @@ The
 app works!
 ```  
 
-text comes from the `app.component.ts` file, and now that we have verified that our app runs, let's make some changes to customize our project.  
+text comes from the `app.component.ts` file, and now that we have verified that our app runs, let''s make some changes to customize our project.  
 
 ## 4. First Edit  
 
@@ -99,15 +101,15 @@ This is our component!
 
 ```typescript
 
-import { Component } from '@angular/core';
+import { Component } from ''@angular/core'';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: ''app-root'',
+  templateUrl: ''./app.component.html'',
+  styleUrls: [''./app.component.css'']
 })
 export class AppComponent {
-  title = 'app works!';
+  title = ''app works!'';
 }
 
 
@@ -137,12 +139,12 @@ The **[Component Decorator]** takes *Metadata* of properties to be used for the 
 An [ngModule] brings together all the different parts of the application.  
 
 ```
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { BrowserModule } from ''@angular/platform-browser'';
+import { NgModule } from ''@angular/core'';
+import { FormsModule } from ''@angular/forms'';
+import { HttpModule } from ''@angular/http'';
 
-import { AppComponent } from './app.component';
+import { AppComponent } from ''./app.component'';
 
 @NgModule({
   declarations: [
@@ -200,12 +202,12 @@ So build a folder directory as such:
 
 ![folder hierarchy][folder hierarchy]
 
-We have transfered each file to it's respective folder but **did not** move `app.module.ts`.  
-You must also remember to update each file's *metadata* to reflect the directory change:  
+We have transfered each file to it''s respective folder but **did not** move `app.module.ts`.  
+You must also remember to update each file''s *metadata* to reflect the directory change:  
 
 ![metadata directory change][metadata directory change]  
 
-if you don't, you'll get a compile error  
+if you don''t, you''ll get a compile error  
 
 ![dir compile error][dir compile error]  
 
@@ -229,19 +231,19 @@ We will add another *property* with some text and a *function* to our component 
 
 ```
 export class AppComponent {
-  title: string = 'Angular2';
+  title: string = ''Angular2'';
  
-  name: string = 'Newton'
+  name: string = ''Newton''
 
   changeName():void{
-    this.name = 'Aristophanes'
+    this.name = ''Aristophanes''
   }
   
 }
 
 ```
 
-**[Typescript annotations]** allows us to put a colon `(:)` after a *property*, *function* or *function argument* to denote it's type. In the case of a *function*, the annotation refers to the expected type the function will return.  
+**[Typescript annotations]** allows us to put a colon `(:)` after a *property*, *function* or *function argument* to denote it''s type. In the case of a *function*, the annotation refers to the expected type the function will return.  
 Here is a list of [Typescript types].  
 
 After declaring a new property `name`, the function `changeName()` changes the value of the `name` property using `this` to denote a class member.  The *void* after the `:` refers to the fact that the function will NOT be returning a value.  
@@ -252,27 +254,27 @@ After declaring a new property `name`, the function `changeName()` changes the v
 </h1>
 
 <h2 (click)=changeName()>
-  {{name}}'s Application
+  {{name}}''s Application
 </h2>
 ```
 
 In the template for the component, we added a `<h2>` for the `name` property.  
 
-`(click)=changeName()` is [Angular2]'s [template sintax] called [Event Binding]. Everytime the `<h2>` gets clicked, it changes the `innerHTML` of the element: right there in front of your very eyes!
+`(click)=changeName()` is [Angular2]''s [template sintax] called [Event Binding]. Everytime the `<h2>` gets clicked, it changes the `innerHTML` of the element: right there in front of your very eyes!
 
-Now that we have played around a little bit with the component and it's template, let's add a new one and explore other features of [Angular2].  
+Now that we have played around a little bit with the component and it''s template, let''s add a new one and explore other features of [Angular2].  
 
 ## 6. A new component
 
 Create a new file in the `src/app/components/` folder called `news.component.ts`.  
 
 ```
-import { Component } from '@angular/core';
+import { Component } from ''@angular/core'';
 
 @Component({
-  selector: 'news-component',
-  templateUrl: '../templates/news.component.html',
-  styleUrls: [ '../styles/app.component.css']
+  selector: ''news-component'',
+  templateUrl: ''../templates/news.component.html'',
+  styleUrls: [ ''../styles/app.component.css'']
 })
 
 export class NewsComponent {
@@ -281,7 +283,7 @@ export class NewsComponent {
 }
 ```
 
-Also, create it's view in `src/app/templates/` folder called 'news.component.html'. 
+Also, create it''s view in `src/app/templates/` folder called ''news.component.html''. 
 
 ```
 <h2>
@@ -302,7 +304,7 @@ We do this by adding the *component selector property* as an *html tag* wherin `
 </h1>
 
 <h2 (click)=changeName()>
-  {{name}}'s Application
+  {{name}}''s Application
 </h2>
 
 <news-component></news-component>
@@ -314,8 +316,8 @@ You WILL NOT see this updated in your browser yet because it is necessary to LOA
 ...
 
   /* components */
-import { AppComponent } from './components/app.component';
-import { NewsComponent } from './components/news.component';
+import { AppComponent } from ''./components/app.component'';
+import { NewsComponent } from ''./components/news.component'';
 
 @NgModule({
   declarations: [
@@ -330,7 +332,7 @@ import { NewsComponent } from './components/news.component';
 ...
 ```    
 Once *imported*, the component has to be included within the `declarations` array of the *module* for it to be available anywhere within the application.  
-Now you'll be able to see the updated component within your browser!  
+Now you''ll be able to see the updated component within your browser!  
 
 Next up, the first service.  
 
@@ -346,15 +348,15 @@ This would bloat the application.
 
 They can be used within any component by way of [Dependency Injection].
 Lets create one for our application.  
-The service is going to make an HTTP call to [News API].  It's going to fetch some information and display it within a component.  
-We will make use of the [RxJx] library which is one of [Angular2]'s bundle for handling information.  
+The service is going to make an HTTP call to [News API].  It''s going to fetch some information and display it within a component.  
+We will make use of the [RxJx] library which is one of [Angular2]''s bundle for handling information.  
 It consists of [observable]s, [subscription]s and a whole library of very usefull and very cool way of handling information.   
 If you thought that Promises were great, you are about to have your shoes knocked off!  
 
 Create a file in **`src/app/services`** like this  
 
 ```
-import { Injectable } from '@angular/core';
+import { Injectable } from ''@angular/core'';
 
 @Injectable()
 export class NewsService{
@@ -363,13 +365,13 @@ export class NewsService{
 ```  
 
 A service looks somewhat similar to a component.  
-The project's service looks like this  
+The project''s service looks like this  
 
 ![first service][first service]
 
-After importing the [Component Decorator], we import [Angular2]'s native [http] class which has all verbs available (get, put, delete, etc) and will be **injected** into our service via [dependency injection] to be used to make HTTP calls to, well, anywhere we want!  
+After importing the [Component Decorator], we import [Angular2]''s native [http] class which has all verbs available (get, put, delete, etc) and will be **injected** into our service via [dependency injection] to be used to make HTTP calls to, well, anywhere we want!  
 
-The class's constructor is where the [Dependency Injection] is gonna take place.
+The class''s constructor is where the [Dependency Injection] is gonna take place.
 
 ```
 constructor(private http: Http){} 
@@ -395,7 +397,7 @@ fetchNews(){
 ```
 
 Once this service is *injected* into any component, `fetchNews()` will be availble within the comopnent to be used to fetch the data from the *api end point*.  
-Let's proceed to our `news.component.ts` file to do that.
+Let''s proceed to our `news.component.ts` file to do that.
 
 ```
 export class NewsComponent {
@@ -433,7 +435,7 @@ export class NewsComponent {
 [Typescript transpiler]: https://www.typescriptlang.org/play/
 [Typescript annotations]: https://www.typescriptlang.org/docs/tutorial.html#type-annotations
 [Typescript types]: https://www.typescriptlang.org/docs/handbook/basic-types.html
-[NPM's package manager]: https://docs.npmjs.com/files/package.json
+[NPM''s package manager]: https://docs.npmjs.com/files/package.json
 [Component Decorator]: https://angular.io/docs/ts/latest/api/core/index/Component-decorator.html
 [ngModule]: https://angular.io/docs/ts/latest/api/core/index/NgModule-interface.html
 [News API]: https://newsapi.org/#documentation
